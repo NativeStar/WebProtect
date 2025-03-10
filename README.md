@@ -1,6 +1,6 @@
 # Web Protect
 
-demo:等待上传调整
+demo:https://nativestar.github.io/WebProtect/demo/index.html
 
 检测浏览器环境是否存在异常 如部分浏览器扩展及油猴脚本
 
