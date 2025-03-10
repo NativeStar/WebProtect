@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momo</title>
+    <link rel="stylesheet" href="./lib/mdui/mdui.css">
+    <link rel="stylesheet" href="./main.css">
+
+</head>
+<script type="module" src="./lib/mdui.esm.js"></script>
+<script type="module" src="../detectorMain.js"></script>
+<script type="module" src="./main.js"></script>
+<body>
+    <dialog id="settingDialog">
+        <input type="checkbox" id="ignoreChromeExtension" class="settingCheckbox">
+        <label for="ignoreChromeExtension">停用浏览器扩展检测(暂仅支持检测Chrome)</label>
+        <br>
+        <input type="checkbox" id="disableConsoleExecute" class="settingCheckbox">
+        <label for="disableConsoleExecute">阻止在控制台执行部分代码</label>
+        <br>
+        <input type="checkbox" id="clearLogsOnOpenConsole" class="settingCheckbox">
+        <label for="clearLogsOnOpenConsole">打开控制台时清除日志(会使部分浏览器崩溃)</label>
+        <br>
+        <button type="button" id="settingSave">确定</button>
+        <button type="button" onclick="this.parentNode.close()">取消</button>
+    </dialog>
+    <mdui-top-app-bar style="position: relative;">
+        <mdui-top-app-bar-title style="color: whitesmoke;font-size: medium;">
+            <b style="margin-left: 5%;">Momo</b>
+        </mdui-top-app-bar-title>
+      </mdui-top-app-bar>
+    <mdui-circular-progress id="loadingProgressBar"></mdui-circular-progress>
+    <div id="main" class="hide">
+        <img src="./res/normal.svg" id="stateIcon">
+        <span id="stateTitle">环境正常</span>
+        <span id="stateDescriptor">没有发现对环境的修改</span>
+        <mdui-card variant="outlined" id="detectDetailCard" class="detectCard hide">
+            <small style="color: gainsboro;margin-top: 10%;margin-left: 1%;">详情</small>
+            <ul id="detectDetailItemsTable"></ul>
+        </mdui-card>
+        <mdui-card variant="outlined" class="detectCard hide" style="margin-top: 0.5%;" id="suspiciousCard">
+            <small style="color: gainsboro;margin-top: 10%;margin-left: 1%;">可疑痕迹</small>
+            <ul id="detectSuspiciousItemsTable"></ul>
+        </mdui-card>
+        <mdui-card variant="outlined" class="detectCard" style="margin-top: 0.5%;">
+            <small style="color: gainsboro;margin-top: 10%;margin-left: 1%;">浏览器信息</small>
+            <br><br>
+            <small class="cardText" style="margin-left: 2%;" id="sysInfoText"></small>
+        </mdui-card>
+        <mdui-card variant="outlined" class="detectCard" style="margin-top: 0.5%;">
+            <small style="color: gainsboro;margin-top: 10%;margin-left: 1%;">背景</small>
+            <br><br>
+            <small class="cardText" style="margin-left: 2%;">
+                WebProtect项目演示页面
+            </small>
+            <br>
+            <small class="cardText" style="margin-left: 2%;">
+                既然Android系统上环境检测已经玩出花了
+                为什么不折腾下Web呢
+            </small>
+            <br>
+            <small class="cardText" style="margin-left: 2%;">
+                界面仿照的著名Android环境检测器"Momo" 点击上方表情可以进行配置
+            </small>
+            <br>
+            <small class="cardText" style="margin-left: 2%;">
+                (默认没上全部强度)
+            </small>
+        </mdui-card>
+        <mdui-card variant="outlined" class="detectCard" style="margin-top: 0.5%;">
+            <small style="color: gainsboro;margin-top: 10%;margin-left: 1%;">链接</small>
+            <mdui-list>
+                <mdui-list-item headline="WebProtect(主项目)" description="null" target="_blank" href="https://github.com">
+                    <img src="./res/github-mark-white.svg" style="width: 24px;height: 24px;" slot="icon">
+                </mdui-list-item>
+                <mdui-list-item headline="Rikka(UI作者)" description="https://github.com/RikkaW" target="_blank" href="https://github.com/RikkaW">
+                    <img src="./res/github-mark-white.svg" style="width: 24px;height: 24px;" slot="icon">
+                </mdui-list-item>
+                <mdui-list-item headline="MDUI(UI库)" description="https://github.com/zdhxiong/mdui" target="_blank" href="https://github.com/zdhxiong/mdui">
+                    <img src="./res/github-mark-white.svg" style="width: 24px;height: 24px;" slot="icon">
+                </mdui-list-item>
+              </mdui-list>
+        </mdui-card>
+    </div>
+</body>
+</html>
